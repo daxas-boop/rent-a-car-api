@@ -8,7 +8,9 @@ export function mapDtoToClass(carDto: CreateCarDto | UpdateCarDto): Car {
   for (const property in carDto) {
     car[property] = carDto[property];
   }
-  car.hasAirConditioning = carDto.hasAirConditioning === 'yes';
+  if (carDto.hasAirConditioning) {
+    car.hasAirConditioning = carDto.hasAirConditioning === 'yes';
+  }
   return car;
 }
 
