@@ -13,7 +13,10 @@ import { ConfigModule } from '@nestjs/config';
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: process.env.NODE_ENV === 'test' ? 'test' : 'rent_cars',
+      database:
+        process.env.NODE_ENV === 'test'
+          ? process.env.DB_NAME_TEST
+          : process.env.DB_NAME,
       entities: [CarEntity],
     }),
     CarModule,
